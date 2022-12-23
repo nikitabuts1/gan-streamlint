@@ -91,7 +91,7 @@ class StreamlintGanModel:
 
 new_classes = []
 for c in list(classes.values()):
-   new_classes.extend(c.split(","))
+   new_classes.extend(c.split(", "))
 
 model = StreamlintGanModel(pretrained_name="biggan-deep-256", device="cpu")
 
