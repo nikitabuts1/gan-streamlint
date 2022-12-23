@@ -3,7 +3,7 @@ from PIL import Image
 import numpy as np
 from pytorch_pretrained_biggan import (BigGAN, one_hot_from_names, truncated_noise_sample)
 
-#import streamlit as st
+import streamlit as st
 import random
 
 import logging as logger
