@@ -45,7 +45,7 @@ st.markdown("### Homework BigGan Buts")
 name = st.text_input("Which object do you want to generate?")
 seed = st.number_input("Choose seed")
 
-if name is not None:
+if name is not None and st.button('Generate'):
     if seed is not None and (seed <= 0 or seed > 10000):
         seed = None
     
