@@ -92,12 +92,9 @@ model = StreamlintGanModel(pretrained_name="biggan-deep-256", device="cpu")
 st.markdown("### Homework BigGan Buts")
 
 name = st.text_input("Which object do you want to generate?")
-seed = st.number_input("Choose seed")
+seed = st.number_input("Choose seed", min_value=1, max_value=10000, step=1)
 
 if name is not None and st.button('Generate'):
-    if seed is not None and (seed <= 0 or seed > 10000):
-        seed = None
-    
-    output = model.predict(name="cup", seed=None)
+    output = model.predict(name=name, seed=None)
     save_as_images(output, file_name="output")
     st.image("output_0.png")
