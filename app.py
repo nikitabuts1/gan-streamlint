@@ -89,13 +89,17 @@ class StreamlintGanModel:
         return output
 
 
+new_classes = []
+for c in list(classes.values()):
+   new_classes.extend(c.split(","))
+
 model = StreamlintGanModel(pretrained_name="biggan-deep-256", device="cpu")
 
 st.markdown("### Homework BigGan Buts")
 
 name = st.selectbox(
     'Select object for generation...',
-    tuple(list(classes.values())))
+    tuple(new_classes))
 seed = st.number_input("Choose seed", min_value=1, max_value=10000, step=1)
 
 if name is not None and st.button('Generate'):
