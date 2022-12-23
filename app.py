@@ -7,6 +7,11 @@ import random
 
 from typing import Tuple
 
+@st.cache
+def load_model(pretrained_name: str):
+    model = BigGAN.from_pretrained(pretrained_name)
+    return model
+
 class StreamlintGanModel:
 
     batch_size: int = 1
@@ -15,9 +20,8 @@ class StreamlintGanModel:
     def __init__(self, pretrained_name: str="biggan-deep-256", device: str="cuda"):
         self.pretrained_name = pretrained_name
         self.device = device
-        self.model = self.load_model(self.pretrained_name).to(self.device)
+        self.model = load_model(self.pretrained_name).to(self.device)
 
-    @st.cache
     @staticmethod
     def load_model(pretrained_name: str):
         model = BigGAN.from_pretrained(pretrained_name)
