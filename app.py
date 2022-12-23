@@ -1,3 +1,5 @@
+from imagenet import classes
+
 import torch
 from PIL import Image
 import numpy as np
@@ -91,7 +93,9 @@ model = StreamlintGanModel(pretrained_name="biggan-deep-256", device="cpu")
 
 st.markdown("### Homework BigGan Buts")
 
-name = st.text_input("Which object do you want to generate?")
+name = st.selectbox(
+    'Select object for generation...',
+    tuple(list(classes.values())))
 seed = st.number_input("Choose seed", min_value=1, max_value=10000, step=1)
 
 if name is not None and st.button('Generate'):
