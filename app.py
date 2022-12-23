@@ -7,6 +7,9 @@ import random
 
 from typing import Tuple
 
+import nltk 
+nltk.download('popular')
+
 @st.cache
 def load_model(pretrained_name: str):
     model = BigGAN.from_pretrained(pretrained_name)
